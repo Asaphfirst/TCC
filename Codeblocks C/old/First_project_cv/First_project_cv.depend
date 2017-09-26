@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1491363387 source:c:\users\rteam\pictures\asaph\personal\tcc\codeblocs c\first_project_cv\main.c
+	"opencv/cv.h"
+	"opencv/highgui.h"
+

@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1493023154 source:c:\users\rteam\pictures\asaph\personal\tcc\codeblocs c\limiar\main.cpp
+	<opencv/cv.h>
+	"opencv/highgui.h"
+	"opencv/cxcore.h"
+
+1493023154 source:c:\users\rteam\pictures\asaph\personal\onedrive - instituto federal de santa catarina\tcc\codeblocs c\limiar\main.cpp
+	<opencv/cv.h>
+	"opencv/highgui.h"
+	"opencv/cxcore.h"
+
+1493023154 source:c:\users\rteam\pictures\asaph\personal\onedrive\tcc\codeblocs c\limiar\main.cpp
+	<opencv/cv.h>
+	"opencv/highgui.h"
+	"opencv/cxcore.h"
+
