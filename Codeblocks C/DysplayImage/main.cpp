@@ -70,19 +70,34 @@ int main(int argc, char** argv)
     {
       Rect bb = boundingRect(Mat(contours[i]));
 
-			if (bb.width > minWidth || bb.width < maxWidth) continue;
-			if (bb.height > minHeight || bb.height < maxHeight) continue;
-			double area = contourArea(contours[i]);
-			if (area > minArea) continue;
-			convexHull(Mat(contours[i], true), hull[i]);
-			double solid = 100 * area / contourArea(hull[i]);
-			if (solid > solidity[0] || solid < solidity[1]) continue;
-			double ratio = (double) bb.width / (double) bb.height;
-			if (ratio > minRatio || ratio < maxRatio)//continue;
+      double area = contourArea(contours[i]);
+      convexHull(Mat(contours[i], true), hull[i]);
+      double solid = 100 * area / contourArea(hull[i]);
+      double ratio = (double) bb.width / (double) bb.height;
+
+
+			if (bb.width > minWidth && bb.width < maxWidth)
             {
-                Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) ); // get a different color for each contour
-                drawContours(output,contours,i, color);  // draw actual contour
-                rectangle(output2,bb,color);
+                cout << "the bb.width is: " << bb.width << endl;
+                if (bb.height > minHeight && bb.height < maxHeight)
+                {
+                    cout << "the bb.height is: " << bb.height << endl;
+                    if (area > minArea)
+                    {
+                        cout << "the area is: " << area << endl;
+                        if (solid > solidity[0] && solid < solidity[1])
+                        {
+                            cout << "the solidity is: " << solid << endl;
+                            if (ratio > minRatio && ratio < maxRatio)
+                            {
+                                cout << "the ratio is: " << ratio << endl;
+                                Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) ); // get a different color for each contour
+                                drawContours(output,contours,i, color);  // draw actual contour
+                                rectangle(output2,bb,color);
+                            }
+                        }
+                    }
+                }
             }
 
     }

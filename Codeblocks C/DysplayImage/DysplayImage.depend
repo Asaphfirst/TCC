@@ -7,3 +7,11 @@
 	<stdio.h>
 	"opencv2/imgproc/imgproc.hpp"
 
+1506413877 source:c:\users\rteam\documents\projects\tcc\codeblocks c\dysplayimage\main.cpp
+	<opencv2/opencv.hpp>
+	"opencv2/core.hpp"
+	"opencv2/imgproc.hpp"
+	"opencv2/highgui.hpp"
+	<stdio.h>
+	"opencv2/imgproc/imgproc.hpp"
+
