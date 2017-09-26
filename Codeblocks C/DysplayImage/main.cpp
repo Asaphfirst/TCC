@@ -102,6 +102,8 @@ int main(int argc, char** argv)
                                 mu[i] = moments(Mat(contours[i]));
                                 cx = int(mu[i].m10/mu[i].m00);
                                 cy = int(mu[i].m01/mu[i].m00);
+
+                                circle(output,Point2f(cx,cy),5,color,FILLED,LINE_8);
                             }
                         }
                     }
@@ -109,13 +111,14 @@ int main(int argc, char** argv)
             }
     }
 
+    printf("posicao em x: %d posicao em y: %d", cx,cy);
     imshow("result",output);
     waitKey();
 
     imshow("result",output2);
     waitKey();
 
-    printf("posicao em x: %d posicao em y: %d", cx,cy);
+
     return 0;
 }
 
