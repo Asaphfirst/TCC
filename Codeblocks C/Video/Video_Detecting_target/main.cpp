@@ -10,13 +10,13 @@
 using namespace cv;
 using namespace std;
 
-double minArea = 400.0;  // default Double
+double minArea = 1000.0;  // default Double
 double minPerimeter = 0.0;  // default Double
 double minWidth = 0.0;  // default Double
 double maxWidth = 200.0;  // default Double
 double minHeight = 0.0;  // default Double
 double maxHeight = 1000.0;  // default Double
-double solidity[] = {0, 90.61433447098976};
+double solidity[] = {0,60};//{0, 90.61433447098976};
 double maxVertices = 1000000.0;  // default Double
 double minVertices = 0.0;  // default Double
 double minRatio = 0.0;  // default Double
@@ -28,7 +28,7 @@ void find_target(vector<vector<Point> > &contours, vector<vector<Point> > &hull,
 
 int main(int argc, char** argv)
 {
-    VideoCapture cap("video6.h264");//h264
+    VideoCapture cap("video11.h264");//h264
     if (!cap.isOpened())
     {
         cout << "error opening the file" << endl;
@@ -44,7 +44,7 @@ int main(int argc, char** argv)
         //cout << "frame channels" << frame.channels() << endl;
         //cout << "limiar channels" << limiar.channels() << endl;
 
-        cvtColor(frame,gray,COLOR_BGR2GRAY);
+        cvtColor(frame,gray,COLOR_RGB2GRAY);
         threshold(gray,limiar,218,255,CV_THRESH_BINARY);
         //namedWindow("Limiar Image", WINDOW_AUTOSIZE);
         //imshow("Limiar Image", limiar);
@@ -67,6 +67,7 @@ int main(int argc, char** argv)
         // find target and draw a filled circle
         find_target(contours,hull,output,output2,minArea,minWidth,maxWidth,minHeight,maxHeight,solidity,minRatio,maxRatio);
 
+        //waitKey(100);
         if (output.empty())
             break;
         if(!output.empty())
