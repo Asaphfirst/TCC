@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1506331325 source:c:\users\rteam\pictures\asaph\personal\tcc\codeblocs c\dysplayimage\main.cpp
+	<opencv2/opencv.hpp>
+	"opencv2/core.hpp"
+	"opencv2/imgproc.hpp"
+	"opencv2/highgui.hpp"
+	<stdio.h>
+	"opencv2/imgproc/imgproc.hpp"
+
+1506423289 source:c:\users\rteam\documents\projects\tcc\codeblocks c\dysplayimage\main.cpp
+	<opencv2/opencv.hpp>
+	"opencv2/core.hpp"
+	"opencv2/imgproc.hpp"
+	"opencv2/highgui.hpp"
+	<stdio.h>
+	"opencv2/imgproc/imgproc.hpp"
+
+1506474309 source:c:\users\rteam\documents\projects\tcc\codeblocks c\video\video_teste\main.cpp
+	<opencv2/opencv.hpp>
+	"opencv2/core.hpp"
+	"opencv2/imgproc.hpp"
+	"opencv2/highgui.hpp"
+	<stdio.h>
+	"opencv2/imgproc/imgproc.hpp"
+
