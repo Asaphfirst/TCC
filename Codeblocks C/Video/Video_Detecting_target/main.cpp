@@ -24,11 +24,14 @@ double maxRatio = 1.5;  // default Double
 int cx=0,cy=0;
 Mat input,limiar,gray;
 
+int low_r=0, low_g=177, low_b=0;
+int high_r=118, high_g=255, high_b=159;
+
 void find_target(vector<vector<Point> > &contours, vector<vector<Point> > &hull,Mat &output,Mat &output2,double minArea, double minWidth, double maxWidth, double minHeight, double maxHeight, double solidity[], double minRatio, double maxRatio);
 
 int main(int argc, char** argv)
 {
-    VideoCapture cap("video11.h264");//h264
+    VideoCapture cap("vid2_1_30.h264");//h264
     if (!cap.isOpened())
     {
         cout << "error opening the file" << endl;
@@ -44,8 +47,9 @@ int main(int argc, char** argv)
         //cout << "frame channels" << frame.channels() << endl;
         //cout << "limiar channels" << limiar.channels() << endl;
 
-        cvtColor(frame,gray,COLOR_RGB2GRAY);
-        threshold(gray,limiar,218,255,CV_THRESH_BINARY);
+        //cvtColor(frame,gray,COLOR_RGB2GRAY); em vez de tranformar para escala de cinza e depois fazer a limiar
+        inRange(frame,Scalar(low_b,low_g,low_r), Scalar(high_b,high_g,high_r),limiar);
+        //threshold(gray,limiar,218,255,CV_THRESH_BINARY); em vez de tranformar para escala de cinza e depois fazer a limiar
         //namedWindow("Limiar Image", WINDOW_AUTOSIZE);
         //imshow("Limiar Image", limiar);
 
