@@ -10,13 +10,13 @@
 using namespace cv;
 using namespace std;
 
-double minArea = 1000.0;  // default Double
+double minArea = 400.0;  // default Double
 double minPerimeter = 0.0;  // default Double
 double minWidth = 0.0;  // default Double
 double maxWidth = 200.0;  // default Double
 double minHeight = 0.0;  // default Double
 double maxHeight = 1000.0;  // default Double
-double solidity[] = {0,60};//{0, 90.61433447098976};
+double solidity[] = {0,60};//{0, 90.61433447098976}; 60 works
 double maxVertices = 1000000.0;  // default Double
 double minVertices = 0.0;  // default Double
 double minRatio = 0.0;  // default Double
@@ -31,7 +31,7 @@ void find_target(vector<vector<Point> > &contours, vector<vector<Point> > &hull,
 
 int main(int argc, char** argv)
 {
-    VideoCapture cap("vid2_1_30.h264");//h264
+    VideoCapture cap("Video2_512p_30fps_1led_exposure-mode_off.h264");//h264 videos 2 e 4 not good
     if (!cap.isOpened())
     {
         cout << "error opening the file" << endl;
