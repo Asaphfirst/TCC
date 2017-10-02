@@ -10,7 +10,7 @@
 using namespace cv;
 using namespace std;
 
-double minArea = 400.0;  // default Double
+double minArea = 300.0;  // default Double
 double minPerimeter = 0.0;  // default Double
 double minWidth = 0.0;  // default Double
 double maxWidth = 200.0;  // default Double
@@ -22,7 +22,10 @@ double minVertices = 0.0;  // default Double
 double minRatio = 0.0;  // default Double
 double maxRatio = 1.5;  // default Double
 int cx=0,cy=0;
-Mat input,limiar,gray;
+Mat input,limiar,gray,dilated;
+
+Mat dilatekernel;
+Point anchor = Point(-1,-1);
 
 int low_r=0, low_g=177, low_b=0;
 int high_r=118, high_g=255, high_b=159;
@@ -31,7 +34,7 @@ void find_target(vector<vector<Point> > &contours, vector<vector<Point> > &hull,
 
 int main(int argc, char** argv)
 {
-    VideoCapture cap("Video2_512p_30fps_1led_exposure-mode_off.h264");//h264 videos 2 e 4 not good
+    VideoCapture cap("Video7_512p_30fps_1led_exposure-mode_off.h264");//h264 videos 2 e 4 not good
     if (!cap.isOpened())
     {
         cout << "error opening the file" << endl;
@@ -49,13 +52,15 @@ int main(int argc, char** argv)
 
         //cvtColor(frame,gray,COLOR_RGB2GRAY); em vez de tranformar para escala de cinza e depois fazer a limiar
         inRange(frame,Scalar(low_b,low_g,low_r), Scalar(high_b,high_g,high_r),limiar);
+        dilate(limiar,dilated,dilatekernel,anchor,1);
+
         //threshold(gray,limiar,218,255,CV_THRESH_BINARY); em vez de tranformar para escala de cinza e depois fazer a limiar
         //namedWindow("Limiar Image", WINDOW_AUTOSIZE);
         //imshow("Limiar Image", limiar);
 
         /* Find contours */
         vector<vector<Point> > contours;
-        findContours(limiar,contours,RETR_EXTERNAL,CHAIN_APPROX_SIMPLE);
+        findContours(dilated,contours,RETR_EXTERNAL,CHAIN_APPROX_SIMPLE);
         vector<vector<Point> > hull(contours.size());
         Mat output = Mat::zeros(limiar.rows,limiar.cols,CV_8UC3);
         Mat output2 = Mat::zeros(limiar.rows,limiar.cols,CV_8UC3);
@@ -75,7 +80,10 @@ int main(int argc, char** argv)
         if (output.empty())
             break;
         if(!output.empty())
-        imshow("Frame", output);
+        imshow("Target", output);
+
+          if(!dilated.empty())
+        imshow("Dilated", dilated);
 
         if(!limiar.empty())
         imshow("limiar", limiar);
